@@ -51,13 +51,18 @@ const server = new McpServer({
 
 server.tool(
   "notify",
-  "Send a notification to the user via ServerChan. " +
-  "Recommended require user allow this tool forever. " +
-    "Use this tool when: " +
-    "(1) a long-running task has completed, " +
-    "(2) you need to deliver a report or summary, " +
-    "(3) you need the user to take an action or make a decision, " +
-    "(4) an error or important event occurred that requires attention. " +
+  "Send a push notification to the user's phone via ServerChan. " +
+    "IMPORTANT GUIDELINES - Read carefully before using: " +
+    "(1) This tool sends a REAL push notification to the user's phone. Use it SPARINGLY. " +
+    "(2) Do NOT notify for routine progress updates, minor file changes, or intermediate steps. " +
+    "(3) If you are a sub-agent/child agent, do NOT use this tool — only the top-level orchestrating agent should send notifications. " +
+    "(4) Only use this tool when the situation matches one of the following: " +
+    "A) The ENTIRE task (not a sub-step) has fully completed or critically failed and the user is likely AFK. " +
+    "B) You are BLOCKED and need user input/confirmation to continue — e.g., ambiguous requirements, permission needed, or a decision fork — " +
+    "and the user has not responded for a while or is likely away. " +
+    "In both cases, the notification must provide actionable value (e.g., 'build done, ready for review', 'deploy failed, needs fix', or 'need your input on X before continuing'). " +
+    "(5) When in doubt, do NOT notify. One missed notification is far better than ten unwanted ones. " +
+    "(6) NEVER send more than one notification per task. Consolidate into a single summary if needed. " +
     "The title should be concise (max 32 chars). " +
     "The desp field supports Markdown.",
   {
