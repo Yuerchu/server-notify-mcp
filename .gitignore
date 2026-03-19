@@ -2,3 +2,22 @@ node_modules/
 dist/
 .env
 pnpm-lock.yaml
+
+# Worker
+worker/node_modules/
+worker/.dev.vars
+worker/.wrangler/
+
+# Android
+android/.gradle/
+android/.idea/
+android/build/
+android/app/build/
+android/local.properties
+android/app/google-services.json
+*.apk
+*.aab
+*.keystore
+
+# Worker lock
+worker/pnpm-lock.yaml
