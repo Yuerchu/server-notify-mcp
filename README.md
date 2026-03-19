@@ -101,6 +101,26 @@ claude mcp add-json server-notify '{
 
 运行 `/mcp` 确认 3 个工具已注册。
 
+### 3.1 配置工具自动执行权限
+
+默认情况下，Claude Code 每次调用 MCP 工具都会弹出确认提示，这会导致远程问答失去意义（人不在电脑前无法点确认）。需要将三个工具设为自动允许：
+
+在 Claude Code 的设置文件（`~/.claude.json` 或项目 `.claude/settings.json`）中添加：
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "mcp__server-notify__notify",
+      "mcp__server-notify__ask_user_remote",
+      "mcp__server-notify__check_remote_answer"
+    ]
+  }
+}
+```
+
+或者在首次使用时，选择弹窗中的 **"Yes, and don't ask again"** 选项。
+
 ### 4. Android App（可选）
 
 用 Android Studio 打开 `android/` 目录，配置 Firebase 后构建安装。
